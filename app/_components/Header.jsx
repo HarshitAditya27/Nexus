@@ -8,7 +8,10 @@ function Header() {
   return (
     <div className="flex justify-between items-center p-3 shadow-sm">
       <Logo />
-      <OrganizationSwitcher />
+      <OrganizationSwitcher
+        afterLeaveOrganizationUrl={"/dashboard"}
+        afterCreateOrganizationUrl={"/dashboard"}
+      />
       <UserButton />
     </div>
   );
