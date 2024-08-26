@@ -16,12 +16,14 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "emoji-picker-react": "^4.11.1",
+    "firebase": "^10.13.0",
     "lucide-react": "^0.435.0",
     "next": "14.2.6",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uuid4": "^2.0.3"
   },
   "devDependencies": {
     "postcss": "^8",

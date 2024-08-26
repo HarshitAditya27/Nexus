@@ -4,14 +4,53 @@ import EmojiPickercomponent from "@/app/_components/EmojiPickercomponent";
 import { Button } from "@/components/ui/button";
 import CoverPicker from "@/components/ui/CoverPicker";
 import { Input } from "@/components/ui/input";
-import { SmilePlus } from "lucide-react";
+import { db } from "@/config/firebaseConfig";
+import { useAuth, useUser } from "@clerk/nextjs";
+import { doc, setDoc } from "firebase/firestore";
+import { Loader2Icon, SmilePlus } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 import React, { useState } from "react";
+import uuid4 from "uuid4";
 
 function page() {
   const [coverImage, setCoverImage] = useState("/cover.jpg");
   const [workspaceName, setWorkspaceName] = useState();
   const [emoji, setEmoji] = useState();
+  const { user } = useUser();
+  const { orgId } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const OnCreateWorkspace = async () => {
+    setLoading(true);
+    const workspaceId = Date.now();
+    const result = await setDoc(doc(db, "workspace", workspaceId.toString()), {
+      workspaceName: workspaceName,
+      emoji: emoji,
+      coverImage: coverImage,
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+      id: workspaceId,
+      orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
+    });
+    const docId = uuid4();
+    await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
+      workspaceId: workspaceId,
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+      coverImage: null,
+      emoji: null,
+      id: docId,
+      documentOutput: [],
+    });
+    await setDoc(doc(db, "documentOutput", docId.toString()), {
+      docId: docId,
+      documentOutput: [],
+    });
+    setLoading(false);
+    router.replace("/workspace/" + workspaceId + "/" + docId);
+  };
+
   return (
     <div className="p-10 md:px-36 lg:px-64 xl:px-96 py-28">
       <div className="shadow-2xl rounded-xl">
@@ -47,7 +86,12 @@ function page() {
             />
           </div>
           <div className="mt-7 flex justify-end gap-6">
-            <Button disabled={!workspaceName?.length}>Create</Button>
+            <Button
+              disabled={!workspaceName?.length || loading}
+              onClick={OnCreateWorkspace}
+            >
+              Create {loading && <Loader2Icon className="animate-spin ml-2" />}
+            </Button>
             <Button variant="outline">Cancel</Button>
           </div>
         </div>
