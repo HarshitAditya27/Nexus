@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import SideNav from "../../_components/SideNav";
+import DocumentEditorSection from "../../_components/DocumentEditorSection";
 
 function Workspace({ params }) {
   useEffect(() => {
@@ -11,7 +12,9 @@ function Workspace({ params }) {
       <div className="">
         <SideNav params={params} />
       </div>
-      <div className="md:ml-72">Document</div>
+      <div className="md:ml-72">
+        <DocumentEditorSection params={params} />
+      </div>
     </div>
   );
 }
