@@ -35,10 +35,11 @@ function SideNav({ params }) {
       collection(db, "workspaceDocuments"),
       where("workspaceId", "==", Number(params?.workspaceid))
     );
-    setDocumentList([]);
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setDocumentList([]);
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
+        // console.log(doc.data());
         setDocumentList((documentList) => [...documentList, doc.data()]);
       });
     });

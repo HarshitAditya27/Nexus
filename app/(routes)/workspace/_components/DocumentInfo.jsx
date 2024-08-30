@@ -1,3 +1,4 @@
+"use client";
 import EmojiPickercomponent from "@/app/_components/EmojiPickerComponent";
 import CoverPicker from "@/components/ui/CoverPicker";
 import { db } from "@/config/firebaseConfig";
@@ -13,7 +14,7 @@ function DocumentInfo({ params }) {
   const [emoji, setEmoji] = useState();
   const [documentInfo, setDocumentInfo] = useState();
   useEffect(() => {
-    params && GetDocumentInfo;
+    params && GetDocumentInfo();
   }, [params]);
 
   const GetDocumentInfo = async () => {
@@ -24,7 +25,7 @@ function DocumentInfo({ params }) {
       console.log(docSnap.data());
       setDocumentInfo(docSnap.data());
       setEmoji(docSnap.data()?.emoji);
-      docSnap.data() & setCoverImage(docSnap.data()?.coverImage);
+      docSnap.data()?.coverImage && setCoverImage(docSnap.data()?.coverImage);
     }
   };
 
@@ -38,7 +39,12 @@ function DocumentInfo({ params }) {
 
   return (
     <div>
-      <CoverPicker setNewCover={(cover) => setCoverImage(cover)}>
+      <CoverPicker
+        setNewCover={(cover) => {
+          setCoverImage(cover);
+          updateDocumentInfo("coverImage", cover);
+        }}
+      >
         {" "}
         <div className="relative group cursor-pointer">
           <h2 className="hidden absolute p-4 w-full h-full items-center group-hover:flex justify-center">
