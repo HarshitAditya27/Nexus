@@ -8,7 +8,7 @@ function DocumentEditorSection({ params }) {
     <div>
       <DocumentHeader />
       <DocumentInfo params={params} />
-      <DocumentEditor />
+      <DocumentEditor params={params} />
     </div>
   );
 }

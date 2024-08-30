@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Delimiter from "@editorjs/delimiter";
@@ -7,22 +7,58 @@ import Table from "@editorjs/table";
 import List from "@editorjs/list";
 import CodeTool from "@editorjs/code";
 import SimpleImage from "@editorjs/simple-image";
-function DocumentEditor() {
+import { db } from "@/config/firebaseConfig";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useUser } from "@clerk/nextjs";
+function DocumentEditor({ params }) {
   const ref = useRef();
   let editor;
+  const { user } = useUser();
+  const [documentOutput, setDocumentOutput] = useState([]);
+  let isFetched = false;
+
   useEffect(() => {
-    InitEditor();
-  }, []);
+    user && InitEditor();
+  }, [user]);
+
+  // useEffect(() => {
+  //   params && GetDocumentOutput();
+  // }, [params]);
+
   const SaveDocument = () => {
-    ref.current.save().then((outputData) => {
+    ref.current.save().then(async (outputData) => {
       console.log(outputData);
+      const docRef = doc(db, "documentOutput", params?.documentid);
+      await updateDoc(docRef, {
+        output: outputData,
+        editedBy: user?.primaryEmailAddress?.emailAddress,
+      });
     });
   };
+
+  const GetDocumentOutput = () => {
+    const unsubscribe = onSnapshot(
+      doc(db, "documentOutput", params?.documentid),
+      (doc) => {
+        console.log(doc.data());
+        if (
+          isFetched == false ||
+          doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress
+        )
+          doc.data()?.output && editor.render(doc.data()?.output);
+        isFetched = true;
+      }
+    );
+  };
+
   const InitEditor = () => {
     if (!editor?.current) {
       editor = new EditorJS({
         onChange: (ap, event) => {
           SaveDocument();
+        },
+        onReady: () => {
+          GetDocumentOutput();
         },
         holder: "editorjs",
         tools: {
