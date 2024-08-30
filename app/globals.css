@@ -5,6 +5,31 @@
 :root {
   --foreground-rgb: 0, 0, 0;
 }
+
+h1.ce-header {
+  @apply text-3xl font-bold;
+}
+
+h2.ce-header {
+  @apply text-2xl font-bold;
+}
+
+h3.ce-header {
+  @apply text-xl font-bold;
+}
+
+h4.ce-header {
+  @apply text-lg font-bold;
+}
+
+h5.ce-header {
+  @apply text-base font-bold;
+}
+
+h6.ce-header {
+  @apply text-base font-bold;
+}
+
 /* 
 @media (prefers-color-scheme: dark) {
   :root {
