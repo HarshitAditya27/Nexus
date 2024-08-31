@@ -46,7 +46,7 @@ function page() {
     });
     await setDoc(doc(db, "documentOutput", docId.toString()), {
       docId: docId,
-      documentOutput: [],
+      output: [],
     });
     setLoading(false);
     router.replace("/workspace/" + workspaceId + "/" + docId);
