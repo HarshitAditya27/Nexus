@@ -6,7 +6,7 @@ import React from "react";
 function WorkspaceItemList({ workspaceList }) {
   const router = useRouter();
   const onClickWorkspaceItem = (workspaceId) => {
-    router.push("/workspace" + workspaceId);
+    router.push("/workspace/" + workspaceId);
   };
 
   return (
