@@ -44,7 +44,7 @@ export function Room({ children, params }) {
         }
 
         // Return the filtered `userIds`
-        return userList.map((user) => user.id);
+        return userList.map((user) => user.email);
       }}
 
       // publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCK_PK}

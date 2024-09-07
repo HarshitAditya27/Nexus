@@ -13,6 +13,7 @@ import { db } from "@/config/firebaseConfig";
 function Header() {
   const { orgId } = useAuth();
   const { user } = useUser();
+
   useEffect(() => {
     user && saveUserData();
   }, [user]);
@@ -20,7 +21,7 @@ function Header() {
   const saveUserData = async () => {
     const docId = user?.primaryEmailAddress?.emailAddress;
     try {
-      await setDoc(doc, (db, "LoopUsers", docId), {
+      await setDoc(doc(db, "LoopUsers", docId), {
         name: user?.fullName,
         avatar: user?.imageUrl,
         email: user?.primaryEmailAddress?.emailAddress,
