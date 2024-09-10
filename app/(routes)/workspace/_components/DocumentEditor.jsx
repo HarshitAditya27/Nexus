@@ -10,6 +10,7 @@ import SimpleImage from "@editorjs/simple-image";
 import { db } from "@/config/firebaseConfig";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useUser } from "@clerk/nextjs";
+import GenerateAITemplate from "./GenerateAITemplate";
 function DocumentEditor({ params }) {
   const ref = useRef();
   let editor;
@@ -30,7 +31,7 @@ function DocumentEditor({ params }) {
       console.log(outputData);
       const docRef = doc(db, "documentOutput", params?.documentid);
       await updateDoc(docRef, {
-        output: outputData,
+        output: JSON.stringify(outputData),
         editedBy: user?.primaryEmailAddress?.emailAddress,
       });
     });
@@ -45,7 +46,7 @@ function DocumentEditor({ params }) {
           isFetched == false ||
           doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress
         )
-          doc.data()?.output && editor.render(doc.data()?.output);
+          doc.data()?.output && editor?.render(JSON.parse(doc.data()?.output));
         isFetched = true;
       }
     );
@@ -106,8 +107,13 @@ function DocumentEditor({ params }) {
     }
   };
   return (
-    <div className="lg:-ml-40">
-      <div id="editorjs"></div>
+    <div className="">
+      <div id="editorjs" className="w-[70%]"></div>
+      <div className="fixed bottom-10 md:ml-80 left-0 z-10">
+        <GenerateAITemplate
+          setGenerateAIOutput={(output) => editor?.render(output)}
+        />
+      </div>
     </div>
   );
 }
