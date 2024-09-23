@@ -46,7 +46,7 @@ function DocumentEditor({ params }) {
           isFetched == false ||
           doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress
         )
-          doc.data()?.output && editor?.render(JSON.parse(doc.data()?.output));
+          doc.data().editedBy && editor?.render(JSON.parse(doc.data()?.output));
         isFetched = true;
       }
     );

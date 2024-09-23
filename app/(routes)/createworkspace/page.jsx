@@ -1,5 +1,4 @@
 "use client";
-
 import EmojiPickercomponent from "@/app/_components/EmojiPickercomponent";
 import { Button } from "@/components/ui/button";
 import CoverPicker from "@/components/ui/CoverPicker";
@@ -10,11 +9,10 @@ import { doc, setDoc } from "firebase/firestore";
 import { Loader2Icon, SmilePlus } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
 import React, { useState } from "react";
 import uuid4 from "uuid4";
 
-function page() {
+function CreateWorkspace() {
   const [coverImage, setCoverImage] = useState("/cover.jpg");
   const [workspaceName, setWorkspaceName] = useState();
   const [emoji, setEmoji] = useState();
@@ -26,7 +24,7 @@ function page() {
   const OnCreateWorkspace = async () => {
     setLoading(true);
     const workspaceId = Date.now();
-    const result = await setDoc(doc(db, "workspace", workspaceId.toString()), {
+    const result = await setDoc(doc(db, "Workspace", workspaceId.toString()), {
       workspaceName: workspaceName,
       emoji: emoji,
       coverImage: coverImage,
@@ -73,7 +71,7 @@ function page() {
 
         <div className="p-12">
           <h2 className="font-medium text-xl">Create a new workspace</h2>
-          <h2>
+          <h2 className="text-sm mt-2">
             Welcome to your shared workspace for team collaboration! Feel free
             to personalize the name whenever you'd like.
           </h2>
@@ -101,4 +99,4 @@ function page() {
   );
 }
 
-export default page;
+export default CreateWorkspace;

@@ -4,10 +4,10 @@ import SideNav from "../../_components/SideNav";
 import DocumentEditorSection from "../../_components/DocumentEditorSection";
 import { Room } from "@/app/Room";
 
-function Workspace({ params }) {
-  useEffect(() => {
-    console.log(params);
-  }, [params]);
+function WorkspaceDocument({ params }) {
+  // useEffect(() => {
+  //   console.log(params);
+  // }, [params]);
   return (
     <Room params={params}>
       <div>
@@ -22,4 +22,4 @@ function Workspace({ params }) {
   );
 }
 
-export default Workspace;
+export default WorkspaceDocument;

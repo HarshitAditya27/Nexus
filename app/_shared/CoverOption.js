@@ -5,6 +5,10 @@ export default [
   },
   {
     imageUrl:
+      "https://img.freepik.com/free-photo/colorful-wave-is-water-word-wave-is-bottom-right_1340-35420.jpg?ga=GA1.1.1679917421.1705195646&semt=ais_user_ai_gen",
+  },
+  {
+    imageUrl:
       "https://wallpapers.com/images/hd/minimalist-byakuya-kuchiki-bleach-4k-ultra-hd-7xbqjyxnv319mi8a.jpg",
   },
   {

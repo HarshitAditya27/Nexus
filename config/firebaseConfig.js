@@ -12,12 +12,18 @@ const firebaseConfig = {
   authDomain: "nexus-7e23c.firebaseapp.com",
   projectId: "nexus-7e23c",
   storageBucket: "nexus-7e23c.appspot.com",
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+  messagingSenderId: "942067488862",
+  appId: "1:942067488862:web:678d19ad97bb3903f63ccf",
+  measurementId: "G-C6D9JSKVY7",
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 const analytics = getAnalytics(app);
+
+/*
+ messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+ */

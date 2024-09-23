@@ -10,6 +10,7 @@ import {
   useUpdateRoomNotificationSettings,
 } from "@liveblocks/react/suspense";
 import { InboxNotification, InboxNotificationList } from "@liveblocks/react-ui";
+
 function NotificationBox({ children }) {
   const { inboxNotifications } = useInboxNotifications();
   const updateRoomNotificationSettings = useUpdateRoomNotificationSettings();
@@ -24,7 +25,7 @@ function NotificationBox({ children }) {
       <PopoverTrigger>
         <div className="flex gap-1">
           {children}{" "}
-          <span className="p-1 rounded-full text-[7px] bg-primary text-white">
+          <span className="p-1 px-2 -ml-3 rounded-full text-[7px] bg-primary text-white">
             {count}
           </span>
         </div>{" "}

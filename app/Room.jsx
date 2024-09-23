@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import {
   LiveblocksProvider,
   RoomProvider,
@@ -23,8 +24,6 @@ export function Room({ children, params }) {
           console.log(doc.data());
           userList.push(doc.data());
         });
-
-        // Return a list of users
         return userList;
       }}
       resolveMentionSuggestions={async ({ text, roomId }) => {
@@ -37,17 +36,13 @@ export function Room({ children, params }) {
         querySnapshot.forEach((doc) => {
           userList.push(doc.data());
         });
-        // If there's a query, filter for the relevant users
+        console.log(userList);
         if (text) {
-          // Filter any way you'd like, e.g. checking if the name matches
           userList = userList.filter((user) => user.name.includes(text));
         }
-
-        // Return the filtered `userIds`
+        console.log(userList.map((user) => user.email));
         return userList.map((user) => user.email);
       }}
-
-      // publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCK_PK}
     >
       <RoomProvider id={params?.documentid ? params?.documentid : "1"}>
         <ClientSideSuspense fallback={<div>Loading…</div>}>

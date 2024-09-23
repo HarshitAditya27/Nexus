@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { OrganizationSwitcher } from "@clerk/nextjs";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import React from "react";
 
 function DocumentHeader() {
@@ -8,7 +8,7 @@ function DocumentHeader() {
       <div></div>
       <OrganizationSwitcher />
       <div className="flex gap-2">
-        <Button>Share</Button>
+        <UserButton />
       </div>
     </div>
   );

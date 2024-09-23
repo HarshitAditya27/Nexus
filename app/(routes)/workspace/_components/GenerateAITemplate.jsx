@@ -24,7 +24,7 @@ function GenerateAITemplate({ setGenerateAIOutput }) {
     console.log(result.response.text());
     try {
       const output = JSON.parse(result.response.text());
-      setGenerateAIOutput();
+      setGenerateAIOutput(output);
     } catch (e) {
       setLoading(false);
     }
@@ -43,10 +43,10 @@ function GenerateAITemplate({ setGenerateAIOutput }) {
         <LayoutGrid className="h-4 w-4" /> Generate From AI
       </Button>
       <Dialog open={open}>
-        <DialogTrigger>Generate AI template</DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Are you absolutely sure?</DialogTitle>
+
             <DialogDescription>
               <h2 className="mt-5"> What do you want to write in document?</h2>
               <Input

@@ -21,7 +21,7 @@ function WorkspaceList() {
 
   const getWorkspaceList = async () => {
     const q = query(
-      collection(db, "workspace"),
+      collection(db, "Workspace"),
       where(
         "orgId",
         "==",
