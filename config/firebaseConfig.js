@@ -17,10 +17,16 @@ const firebaseConfig = {
   measurementId: "G-C6D9JSKVY7",
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-const analytics = getAnalytics(app);
+let app;
+let db;
+
+if (typeof window !== "undefined") {
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+  const analytics = getAnalytics(app);
+}
+
+export { app, db };
 
 /*
  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
