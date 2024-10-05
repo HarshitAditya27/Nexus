@@ -1,5 +1,5 @@
 "use client";
-import EmojiPickercomponent from "@/app/_components/EmojiPickerComponent";
+import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import CoverPicker from "@/components/ui/CoverPicker";
 import { db } from "@/config/firebaseConfig";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -62,7 +62,7 @@ function DocumentInfo({ params }) {
         </div>
       </CoverPicker>
       <div className="absolute ml-10 mt-[-40px] cursor-pointer">
-        <EmojiPickercomponent
+        <EmojiPickerComponent
           setEmojiIcon={(emoji) => {
             setEmoji(emoji);
             updateDocumentInfo("emoji", emoji);
@@ -75,7 +75,7 @@ function DocumentInfo({ params }) {
               <SmilePlus className="h-10 w-10 text-gray-500" />
             )}
           </div>
-        </EmojiPickercomponent>
+        </EmojiPickerComponent>
       </div>
       <div className="mt-10 p-10">
         <input

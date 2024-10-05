@@ -1,5 +1,5 @@
 "use client";
-import EmojiPickercomponent from "@/app/_components/EmojiPickercomponent";
+import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import { Button } from "@/components/ui/button";
 import CoverPicker from "@/components/ui/CoverPicker";
 import { Input } from "@/components/ui/input";
@@ -77,9 +77,9 @@ function CreateWorkspace() {
             to personalize the name whenever you'd like.
           </h2>
           <div className="mt-8 flex gap-2 items-center">
-            <EmojiPickercomponent setEmojiIcon={(value) => setEmoji(value)}>
+            <EmojiPickerComponent setEmojiIcon={(v) => setEmoji(v)}>
               <Button variant="outline">{emoji ? emoji : <SmilePlus />}</Button>
-            </EmojiPickercomponent>
+            </EmojiPickerComponent>
             <Input
               placeholder="Workspace name"
               onChange={(e) => setWorkspaceName(e.target.value)}
