@@ -21,7 +21,7 @@ export function Room({ children, params }) {
         const querySnapshot = await getDocs(q);
         const userList = [];
         querySnapshot.forEach((doc) => {
-          console.log(doc.data());
+          // console.log(doc.data());
           userList.push(doc.data());
         });
         return userList;
@@ -36,11 +36,11 @@ export function Room({ children, params }) {
         querySnapshot.forEach((doc) => {
           userList.push(doc.data());
         });
-        console.log(userList);
+        // console.log(userList);
         if (text) {
           userList = userList.filter((user) => user.name.includes(text));
         }
-        console.log(userList.map((user) => user.email));
+        // console.log(userList.map((user) => user.email));
         return userList.map((user) => user.email);
       }}
     >

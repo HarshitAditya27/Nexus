@@ -27,7 +27,14 @@ function DocumentList({ documentList, params }) {
           }`}
         >
           <div className="flex gap-2 items-center">
-            {!doc.emoji && <Image src={""} width={20} height={20} />}
+            {!doc.emoji && (
+              <Image
+                src={"/notes.png"}
+                alt="notes icon"
+                width={35}
+                height={35}
+              />
+            )}
             <h2 className="flex gap-2">
               {" "}
               {doc?.emoji} {doc.documentName}

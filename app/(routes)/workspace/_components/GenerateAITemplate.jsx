@@ -21,7 +21,7 @@ function GenerateAITemplate({ setGenerateAIOutput }) {
     setLoading(true);
     const PROMPT = "Generate template for editor.js in JSON for" + userInput;
     const result = await chatSession.sendMessage(PROMPT);
-    console.log(result.response.text());
+    //  console.log(result.response.text());
     try {
       const output = JSON.parse(result.response.text());
       setGenerateAIOutput(output);

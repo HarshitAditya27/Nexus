@@ -28,7 +28,7 @@ function DocumentEditor({ params }) {
 
   const SaveDocument = () => {
     ref.current.save().then(async (outputData) => {
-      console.log(outputData);
+      // console.log(outputData);
       const docRef = doc(db, "documentOutput", params?.documentid);
       await updateDoc(docRef, {
         output: JSON.stringify(outputData),
@@ -41,7 +41,7 @@ function DocumentEditor({ params }) {
     const unsubscribe = onSnapshot(
       doc(db, "documentOutput", params?.documentid),
       (doc) => {
-        console.log(doc.data());
+        // console.log(doc.data());
         if (
           isFetched == false ||
           doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress

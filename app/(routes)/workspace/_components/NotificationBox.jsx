@@ -17,7 +17,7 @@ function NotificationBox({ children }) {
   const { count, error, isLoading } = useUnreadInboxNotificationsCount();
   useEffect(() => {
     updateRoomNotificationSettings({ threads: "all" });
-    console.log(count);
+    //  console.log(count);
   }, [count]);
 
   return (

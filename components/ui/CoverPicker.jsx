@@ -37,6 +37,7 @@ function CoverPicker({ children, setNewCover }) {
                     src={cover?.imageUrl}
                     width={200}
                     height={140}
+                    alt="customized customer image"
                     className="h-[70px] w-full rounded-md object-cover"
                   />
                 </div>

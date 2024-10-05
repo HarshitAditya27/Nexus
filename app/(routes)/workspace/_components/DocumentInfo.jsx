@@ -22,7 +22,7 @@ function DocumentInfo({ params }) {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log(docSnap.data());
+      // console.log(docSnap.data());
       setDocumentInfo(docSnap.data());
       setEmoji(docSnap.data()?.emoji);
       docSnap.data()?.coverImage && setCoverImage(docSnap.data()?.coverImage);
@@ -53,6 +53,7 @@ function DocumentInfo({ params }) {
           <div className="group-hover:opacity-40">
             <Image
               src={coverImage}
+              alt="cover image"
               height={400}
               width={400}
               className="w-full h-[200px] object-cover rounded-t-xl"

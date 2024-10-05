@@ -61,6 +61,7 @@ function CreateWorkspace() {
             <div className="group-hover:opacity-69">
               <Image
                 src={coverImage}
+                alt="cover image"
                 height={400}
                 width={400}
                 className="w-full h-[150px] object-cover rounded-t-xl"
