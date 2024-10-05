@@ -1,14 +1,16 @@
+"use client";
 import EmojiPicker from "emoji-picker-react";
 import React, { useState } from "react";
 
-function EmojiPickercomponent({ children, setEmojiIcon }) {
+function EmojiPickerComponent({ children, setEmojiIcon }) {
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
   return (
     <div>
-      <div onClick={() => setOpenEmojiPicker(true)}>{children}</div>{" "}
+      <div onClick={() => setOpenEmojiPicker(true)}>{children}</div>
       {openEmojiPicker && (
         <div className="absolute z-10">
           <EmojiPicker
+            emojiStyle="facebook"
             onEmojiClick={(e) => {
               setEmojiIcon(e.emoji);
               setOpenEmojiPicker(false);
@@ -20,4 +22,4 @@ function EmojiPickercomponent({ children, setEmojiIcon }) {
   );
 }
 
-export default EmojiPickercomponent;
+export default EmojiPickerComponent;
