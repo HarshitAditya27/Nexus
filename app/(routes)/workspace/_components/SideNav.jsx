@@ -87,7 +87,7 @@ function SideNav({ params }) {
       <hr className="my-5 border-black" />
       <div>
         <div className=" flex justify-between items-center">
-          <h2>Workspace Name</h2>
+          <h2>Your's Workspace</h2>
           <Button size="sm" onClick={CreateNewDocument}>
             {loading ? <Loader2Icon className="h-4 w-4 animate-spin" /> : "+"}
           </Button>
