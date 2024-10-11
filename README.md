@@ -1,6 +1,6 @@
 <p align='center'><img src='' width="250" ></p>
 <h1 align='center'> Nexus</h1> 
-<p align='center'>Deployed Link: https://nexus-nine-xi.vercel.app/  </p>
+<p align='center'> <a href="https://nexus-nine-xi.vercel.app/">Deployed Link </a> | <a href="https://youtu.be/eVeTyp30zvs">Demo Link</a>   </p>
 
 ## Introduction 🐱‍💻
 - Nexus is an innovative collaborative platform designed for efficient note-taking and document management. Users can seamlessly create and modify notes with advanced features like lists, tables, code blocks, and snippets, ensuring flexibility for various content types. Nexus enhances team collaboration by allowing users to leave comments, messages, and feedback directly on documents within shared workspaces, fostering communication and streamlined project management. The platform is ideal for teams seeking a comprehensive, interactive solution for collaborative writing and documentation.
