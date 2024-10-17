@@ -29,7 +29,7 @@
 
 ## Learnings 📝
   
-- Learned how to integraste **Liveblocks** and **Gemini API** for an application. 
+- Learned how to integrate **Liveblocks** and **Gemini API** for an application. 
 - Learned how to use **Firebase** for storing and modifying data to produce correct and error-free results in deployed version of the application. 
   
 ## Installation 🛠️
